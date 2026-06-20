@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NovaMart — Modern Shopping</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="index.html">Nova<span style="color:#fff">Mart</span></a>
+  <ul>
+    <li><a href="index.html" class="active">Shop</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <div class="cart-icon" onclick="toggleCart()">
+    🛒
+    <span class="cart-badge" id="cart-count">0</span>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1>Shop the <span>Future</span></h1>
+  <p>Curated products for modern living — quality you can trust, prices you'll love.</p>
+  <a href="#products" class="hero-btn">Browse Products</a>
+</section>
+
+<h2 class="section-title" id="products">Our <span>Products</span></h2>
+
+<div class="products-grid" id="product-grid"></div>
+
+<div class="toast" id="toast"></div>
+
+<footer>
+  <p>&copy; 2026 <span>NovaMart</span>. All rights reserved.</p>
+</footer>
+
+<script>
+  const products = [
+    {
+      id: 1,
+      name: "Wireless Noise-Cancelling Headphones",
+      category: "Electronics",
+      price: 129.99,
+      emoji: "🎧",
+      desc: "Premium over-ear headphones with 40-hour battery life and active noise cancellation."
+    },
+    {
+      id: 2,
+      name: "Minimalist Leather Wallet",
+      category: "Accessories",
+      price: 49.99,
+      emoji: "👛",
+      desc: "Slim genuine leather wallet with RFID blocking — holds up to 8 cards and cash."
+    },
+    {
+      id: 3,
+      name: "Smart Fitness Tracker",
+      category: "Electronics",
+      price: 89.99,
+      emoji: "⌚",
+      desc: "Track steps, heart rate, sleep, and more. Water-resistant with a 7-day battery."
+    },
+    {
+      id: 4,
+      name: "Organic Cotton Tote Bag",
+      category: "Lifestyle",
+      price: 24.99,
+      emoji: "👜",
+      desc: "Eco-friendly heavyweight canvas tote — perfect for groceries, the gym, or everyday carry."
+    },
+    {
+      id: 5,
+      name: "Portable Espresso Maker",
+      category: "Kitchen",
+      price: 74.99,
+      emoji: "☕",
+      desc: "Barista-quality espresso anywhere. No electricity needed — just hot water and coffee grounds."
+    }
+  ];
+
+  let cart = [];
+
+  function renderProducts() {
+    const grid = document.getElementById('product-grid');
+    grid.innerHTML = products.map(p => `
+      <div class="card">
+        <div class="card-img">${p.emoji}</div>
+        <div class="card-body">
+          <div class="card-category">${p.category}</div>
+          <div class="card-title">${p.name}</div>
+          <div class="card-desc">${p.desc}</div>
+          <div class="card-footer">
+            <span class="price">$${p.price.toFixed(2)}</span>
+            <button class="add-btn" onclick="addToCart(${p.id})">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function addToCart(id) {
+    const product = products.find(p => p.id === id);
+    cart.push(product);
+    document.getElementById('cart-count').textContent = cart.length;
+    showToast(`${product.emoji} "${product.name}" added to cart!`);
+  }
+
+  function showToast(msg) {
+    const toast = document.getElementById('toast');
+    toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2500);
+  }
+
+  renderProducts();
+</script>
+</body>
+</html>
