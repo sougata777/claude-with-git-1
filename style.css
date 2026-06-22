@@ -312,6 +312,64 @@ nav ul a:hover, nav ul a.active {
 .team-card h4 { color: #1a1a2e; margin-bottom: 0.3rem; }
 .team-card p { font-size: 0.8rem; color: #e94560; font-weight: 600; }
 
+/* HELP / FAQ PAGE */
+.faq-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.faq-heading {
+  font-size: 1.6rem;
+  color: #1a1a2e;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.faq-heading span { color: #e94560; }
+
+.faq-item {
+  background: white;
+  border-radius: 12px;
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+
+.faq-item summary {
+  font-weight: 700;
+  color: #1a1a2e;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.faq-item summary::-webkit-details-marker { display: none; }
+
+.faq-item summary::after {
+  content: '+';
+  color: #e94560;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-left: 1rem;
+  transition: transform 0.2s;
+}
+
+.faq-item[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.faq-item p {
+  color: #777;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-top: 0.8rem;
+}
+
+.faq-item a { color: #e94560; }
+
 /* FOOTER */
 footer {
   background: #1a1a2e;
